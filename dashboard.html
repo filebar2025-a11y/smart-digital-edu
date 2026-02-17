@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Digital Edu - Dashboard</title>
+    <style>
+        body { font-family: Arial; padding: 30px; background-color: #f4f4f4; }
+        h1 { color: #0A1931; }
+        button { padding: 10px 20px; margin: 10px; background-color: #185ADB; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        table { margin-top: 20px; border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #0A1931; padding: 10px; text-align: left; }
+        th { background-color: #0A1931; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Smart Digital Edu Dashboard!</h1>
+
+    <h2>Register Student</h2>
+    <input type="text" id="studentName" placeholder="Student Name">
+    <input type="text" id="studentGrade" placeholder="Grade">
+    <button onclick="registerStudent()">Register</button>
+
+    <h2>Student List</h2>
+    <table id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+        </tr>
+    </table>
+
+    <script>
+        // JS array to store students temporarily
+        let students = [];
+
+        function registerStudent() {
+            let name = document.getElementById("studentName").value;
+            let grade = document.getElementById("studentGrade").value;
+
+            if(name === "" || grade === "") {
+                alert("Please enter both name and grade!");
+                return;
+            }
+
+            // Add student to array
+            students.push({name: name, grade: grade});
+
+            // Clear input fields
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentGrade").value = "";
+
+            // Update table
+            updateTable();
+        }
+
+        function updateTable() {
+            let table = document.getElementById("studentTable");
+            // Remove all rows except header
+            table.innerHTML = "<tr><th>Name</th><th>Grade</th></tr>";
+            // Add students
+            students.forEach(student => {
+                let row = table.insertRow();
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                cell1.innerHTML = student.name;
+                cell2.innerHTML = student.grade;
+            });
+        }
+    </script>
+
+</body>
+  </html>
