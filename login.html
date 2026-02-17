@@ -1,0 +1,30 @@
+<div style="background: white; padding: 20px; border-radius: 8px; max-width: 300px; margin: auto;">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email (e.g. test@me.com)" required><br>
+    <input type="password" id="password" placeholder="Password (min 6 chars)" required><br>
+    <button onclick="validateAndLogin()">Login Now</button>
+    <p id="error-msg" style="color: red; font-size: 12px;"></p>
+</div>
+
+<script>
+function validateAndLogin() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const errorMsg = document.getElementById('error-msg');
+
+    // 1. Validation Logic (Checkmark 1ffaa akka katuuf)
+    if (email === "" || !email.includes("@")) {
+        errorMsg.innerText = "Maaloo Email sirrii galchi!";
+        return;
+    }
+    
+    if (password.length < 6) {
+        errorMsg.innerText = "Password yoo xiqqaate dijitii 6 ta'uu qaba!";
+        return;
+    }
+
+    // 2. Redirect Logic (Checkmark 2ffaa akka katuuf)
+    alert("Login Milkaa'eera! Gara Dashboard-itti si geessaa jirra...");
+    window.location.href = "dashboard.html"; // Maqaa file dashboard keetii sirrii ta'uu mirkaneessi
+}
+</script>
