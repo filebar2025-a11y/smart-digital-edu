@@ -1,0 +1,6 @@
+if(user === "filebar" && pass === "1234") {
+    alert("Login Successful! Welcome Developer Filebar 🚀");
+    window.location.href = "dashboard.html"; // Path sirrii mirkaneessi
+} else {
+    document.getElementById("message").innerText = "Login Refused! ❌";
+}
